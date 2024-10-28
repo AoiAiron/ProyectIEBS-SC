@@ -78,9 +78,35 @@ Para implementar este contrato, sigue los siguientes pasos:
 - Usa **listNFT** para listar tus tokens NFT a la venta en el marketplace.
 - Para comprar un NFT listado, usa **purchaseNFT**, y el NFT será transferido al comprador tras el pago.
 
-# Contrato del Marketplace
-- 0x95da1F276289462093C05daC3D341739Ee7B504F
-- (https://sepolia.etherscan.io/address/0x95da1f276289462093c05dac3d341739ee7b504f)
+# Explorador de bloques
+
+
+- **CONTRATO TOKEN.SOL Fase 2 (ORO)**
+0xFeC0Dc8C2Fc9479Af63ad2Be21f36fCFadc2f734
+https://sepolia.etherscan.io/tx/0x309fa807d58168f3a88ddcb6b8635d9f99597422c1c787a64ee8ef40ee80fc4d
+
+- **CONTRATO DEX.SOL FASE 2**
+0x70B48b9ed04AE8D9f1576f725793Dcc3f5C63B21
+https://sepolia.etherscan.io/tx/0x8764886ae17e53097f6fe17eff30e82db186500cd6794f136821674e87e55ffe
+
+
+- **CONTRATO CREATURES.SOL FASE 3**
+0x1313c30eE47B841d8a2b1f4E79e86ABE62919cCb
+https://sepolia.etherscan.io/tx/0x0fb94af29763a3225f87fae78b300c032fee8a6d92c1b4cf4616826ebfaf0a66
+
+- **Obtain creature 1**
+https://sepolia.etherscan.io/tx/0xba5c56b864a2081c8df4cdc48f2e57628267bdd02183080d918bd6b22c66b827
+- **Obtain creature2**
+https://sepolia.etherscan.io/tx/0x9adff51e5fa040b82e4fe0f3ed42e9f36693817e07f6003e2ece0f23a4a02120
+- **Obtain creature 3**
+https://sepolia.etherscan.io/tx/0xb7038015e81b3fea54bdba87e0a70a09aee5b9ebc633d3146764bbef0c30b447
+
+- **MARKETPLACE**
+0x7C74fE55Fc5469368D53061adC85fA7115f0a576
+https://sepolia.etherscan.io/tx/0x269af11631e5c5734867c7b9650d86635db4dd86353777e707b8939c48144784
+- **Envio de 1 creature nft al Marketplace**
+https://sepolia.etherscan.io/tx/0x0665c1523ef733553bd0a57cafd98c2b2eb0730765470b15e2737adfe510c94e
+
 
 ```shell
 npx hardhat help
