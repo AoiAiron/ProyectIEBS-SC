@@ -78,19 +78,15 @@ Para implementar este contrato, sigue los siguientes pasos:
 - Usa **listNFT** para listar tus tokens NFT a la venta en el marketplace.
 - Para comprar un NFT listado, usa **purchaseNFT**, y el NFT será transferido al comprador tras el pago.
 
+
 # Explorador de bloques
 
-
-- **CONTRATO TOKEN.SOL Fase 2 (ORO)**
+- **CONTRATO TOKEN.SOL(ORO)**
 0xFeC0Dc8C2Fc9479Af63ad2Be21f36fCFadc2f734
 https://sepolia.etherscan.io/tx/0x309fa807d58168f3a88ddcb6b8635d9f99597422c1c787a64ee8ef40ee80fc4d
 
-- **CONTRATO DEX.SOL FASE 2**
-0x70B48b9ed04AE8D9f1576f725793Dcc3f5C63B21
-https://sepolia.etherscan.io/tx/0x8764886ae17e53097f6fe17eff30e82db186500cd6794f136821674e87e55ffe
 
-
-- **CONTRATO CREATURES.SOL FASE 3**
+- **CONTRATO CREATURES.SOL**
 0x1313c30eE47B841d8a2b1f4E79e86ABE62919cCb
 https://sepolia.etherscan.io/tx/0x0fb94af29763a3225f87fae78b300c032fee8a6d92c1b4cf4616826ebfaf0a66
 
