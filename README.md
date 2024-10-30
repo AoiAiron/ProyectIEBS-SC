@@ -43,6 +43,44 @@ Para esto usaremos 3 contratos:
 
 - **updateNFTPrice:** Permite al vendedor de un NFT cambiar el precio del token listado.
 
+## Contrato Creatures.sol 
+Permite mintear un NFT ERC721 al que asocia como creature.
+
+Caracteristicas de las criaturas:
+- name: El nombre de la criatura, que se saca aleatorio de un array definido.
+- elementType: El tipo de elemento (fuego, agua, tierra o aire), como enum.
+- level: El nivel de la criatura, que siempre empieza en 1.
+- attackPower: La potencia de ataque de la criatura (valor entre 1 y 100, generado aleatoriamente).
+- defensePower: La potencia de defensa de la criatura (valor entre 1 y 100, también generado aleatoriamente). 
+
+### Variables Principales
+
+- **_nextTokenId:**  Lleva registro del próximo ID de token que se asignará. Inicializa en 1 y se incrementa cada vez que se mintea una nueva criatura.
+- **creatures:** Un mapping que almacena la información de cada criatura asociada a su respectivo ID.
+
+**Estructura (caracteristicas de la creatura)**
+- string name;             // Nombre de la criatura 
+- ElementType elementType; // El tipo de elemento
+- uint256 level;           // Level de la criatura 
+- uint256 attackPower;     // Poder de ataque 
+- uint256 defensePower;    // Poder de defensa 
+
+### Funciones Principales
+- **obtainCreature(address player):** Permite mintear una creatura, asignandola a un jugador (address) 
+- **_random:** Busca generar un número aleatorio, usando informacion disponible en el bloque como el momento en que fue validado, el último randao del bloque del epoch anterior y la dirección que hace la llamada. En este momento es previsible y debido a tiempos en la cadena el poder de ataque suele ser igual al poder de defensa (que usan la fucion), se podria mejorar buscando el número aleatorio externo o usando otros recursos como Chainlink.
+
+### Eventos
+- **CreatureObtained:** Se emite cada vez que una criatura es obtenida por un jugador.
+
+## Token.sol
+Este contrato permite la creación y administración de un token ERC20 personalizado, con funciones de emisión (minting) y quema (burning) controladas por un administrador (centralizado). Implementa un suministro máximo fijo (maxSupply), lo que asegura que no se puedan emitir tokens de forma ilimitada.
+
+**Funciones**
+- **mint(uint256 _amount, address _to)**: Permite mintear nuevos tokens, solo el administrador puede llamar a esta función. Revierte si la cantidad es 0 o si se excede el suministro máximo. Los tokens se mintean en la dirección del administrador y luego se transfieren a la dirección especificada _to, si se especifica.
+- **burn(uint256 _amount):** Permite quemar (burn) tokens, solo el administrador puede llamar a esta función. Realiza la quema de tokens en la cuenta del administrador.
+- **setAdmin(address _admin):** Permite cambiar la dirección del administrador. Solo el administrador esta autorizado para realizarlo.
+
+
 
 ## Configuracion y Despliegue con Hardhat
 
@@ -70,7 +108,8 @@ npx hardhat ignition deploy ./ignition/modules/battle.js --network localhost
 ```
 
 # TEST
-(NECESITO LAS FOTOS DEL DEPLOYMENT EN HARDHAT)
+<a href="https://ibb.co/dmDZqRS"><img src="https://i.ibb.co/jJDt2Sd/Imagen-de-Whats-App-2024-10-30-a-las-05-11-35-ee170480.jpg" alt="Imagen-de-Whats-App-2024-10-30-a-las-05-11-35-ee170480" border="0"></a>
+<a href="https://ibb.co/NN12g2V"><img src="https://i.ibb.co/fN8dVd1/Imagen-de-Whats-App-2024-10-30-a-las-05-11-14-9e0aebec.jpg" alt="Imagen-de-Whats-App-2024-10-30-a-las-05-11-14-9e0aebec" border="0"></a>
 
 # Ejemplo de implementación
 Para implementar este contrato, sigue los siguientes pasos:
@@ -81,28 +120,20 @@ Para implementar este contrato, sigue los siguientes pasos:
 
 # Explorador de bloques
 
-- **CONTRATO TOKEN.SOL(ORO)**
-0xFeC0Dc8C2Fc9479Af63ad2Be21f36fCFadc2f734
-https://sepolia.etherscan.io/tx/0x309fa807d58168f3a88ddcb6b8635d9f99597422c1c787a64ee8ef40ee80fc4d
+- **Contrato Token - Verificado** 0x4856cc7769B30F77C62aEd0927c7Ac8F06A5A34c
+- https://sepolia.etherscan.io/address/0x4856cc7769B30F77C62aEd0927c7Ac8F06A5A34c
+- Transaction - Minting Tokens to other address
+- https://sepolia.etherscan.io/tx/0xc49276e0e296111b68b806e36cc66ba05585f5b08686636023db7ebce8f79bad
+- **Contrato Creatures – Verificado** 0xDFCE0bD0DFC126a0FBD84eA905F75d04b972e7Dc
+- https://sepolia.etherscan.io/address/0xDFCE0bD0DFC126a0FBD84eA905F75d04b972e7Dc
+- **Transaction – Obtain Creature 1**
+- https://sepolia.etherscan.io/tx/0xa6f38ce7f308774d8f1d04e79e9012ba9493fd9788bc0790f42663d321fa5965
+- **Contrato Marketplace – Verificado** 0xf326d606654578f4c68C308EEA56F7C06FF56f9f
+- https://sepolia.etherscan.io/address/0xf326d606654578f4c68C308EEA56F7C06FF56f9f
 
-
-- **CONTRATO CREATURES.SOL**
-0x1313c30eE47B841d8a2b1f4E79e86ABE62919cCb
-https://sepolia.etherscan.io/tx/0x0fb94af29763a3225f87fae78b300c032fee8a6d92c1b4cf4616826ebfaf0a66
-
-- **Obtain creature 1**
-https://sepolia.etherscan.io/tx/0xba5c56b864a2081c8df4cdc48f2e57628267bdd02183080d918bd6b22c66b827
-- **Obtain creature2**
-https://sepolia.etherscan.io/tx/0x9adff51e5fa040b82e4fe0f3ed42e9f36693817e07f6003e2ece0f23a4a02120
-- **Obtain creature 3**
-https://sepolia.etherscan.io/tx/0xb7038015e81b3fea54bdba87e0a70a09aee5b9ebc633d3146764bbef0c30b447
-
-- **MARKETPLACE**
-0x7C74fE55Fc5469368D53061adC85fA7115f0a576
-https://sepolia.etherscan.io/tx/0x269af11631e5c5734867c7b9650d86635db4dd86353777e707b8939c48144784
-- **Envio de 1 creature nft al Marketplace**
-https://sepolia.etherscan.io/tx/0x0665c1523ef733553bd0a57cafd98c2b2eb0730765470b15e2737adfe510c94e
-
+# NOTA:
+- Tras multiples pruebas, los contratos funcionan en local. Pero al hacer las pruebas en la red sepolia con el último contrato (marketplace) no se ha podido completar la transacción.
+Agradeceriamos una revisión del contrato por si encuentra algun fallo que se nos haya pasado por alto.
 
 ```shell
 npx hardhat help
